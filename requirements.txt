@@ -1,0 +1,4 @@
+Flask==3.0.3
+gunicorn==23.0.0
+# Client SSO partagé : épingler un tag, mettre à jour volontairement
+auth-client @ git+https://github.com/Mortdu-web/auth.git@v0.1.0#subdirectory=client

@@ -1,0 +1,19 @@
+services:
+  __SLUG__:
+    build: .
+    container_name: __SLUG__
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "${BIND_IP:-127.0.0.1}:${PORT:-__PORT__}:5000"
+    healthcheck:
+      test: ["CMD", "python", "scripts/healthcheck.py"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    networks:
+      - web
+
+networks:
+  web:
+    external: true

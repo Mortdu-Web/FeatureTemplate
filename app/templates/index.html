@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{ title }}</h1>
+  {% if user %}
+    <p>Connecté en tant que <strong>{{ user.username }}</strong> ({{ user.email or "pas d'email" }})</p>
+    <p>Rôles : {{ user.roles | join(", ") or "aucun" }}</p>
+  {% endif %}
+  <p>
+    <a href="{{ url_for('pages.home') }}">Accueil</a> ·
+    <a href="{{ url_for('pages.admin') }}">Admin (rôle « admin »)</a> ·
+    <a href="{{ url_for('api.whoami') }}">whoami</a>
+  </p>
+{% endblock %}
